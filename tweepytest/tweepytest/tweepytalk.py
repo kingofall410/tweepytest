@@ -18,7 +18,7 @@ class TweepyTalk:
         self.api = tweepy.API(auth)
      
     def getTweets(self):
-        public_tweets = self.api.search("$ATI")
-        tweetlist = [tweet.text+"<br>" for tweet in public_tweets]
+        public_tweets = self.api.search(geocode="39.994683,-75.311799,0.5mi", since_id="2017-06-01", rpp=100)
+        tweetlist = [tweet.user.name+" - "+tweet.text+" "+str(tweet.created_at)+"<br>" for tweet in public_tweets]
         return tweetlist
         
